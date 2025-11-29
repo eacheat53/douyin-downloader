@@ -34,16 +34,20 @@ cd douyin-downloader
 
 2. **安装依赖**
 ```bash
-pip install -r requirements.txt
+# 使用 uv (推荐)
+uv sync
+
+# 或使用传统 pip 方式
+pip install -e .
 ```
 
 3. **配置 Cookie**（首次使用需要）
 ```bash
 # 方式1：自动获取（推荐）
-python cookie_extractor.py
+uv run cookie_extractor.py
 
 # 方式2：手动获取
-python get_cookies_manual.py
+uv run get_cookies_manual.py
 ```
 
 ## 📦 版本说明
@@ -121,10 +125,10 @@ database: True # 使用数据库记录
 
 ```bash
 # 使用配置文件运行
-python DouYinCommand.py
+uv run DouYinCommand.py
 
 # 或者使用命令行参数
-python DouYinCommand.py --cmd False
+uv run DouYinCommand.py --cmd False
 ```
 
 ### 使用示例
@@ -132,15 +136,15 @@ python DouYinCommand.py --cmd False
 ```bash
 # 下载单个视频
 # 在 config.yml 中设置 link 为单个视频链接
-python DouYinCommand.py
+uv run DouYinCommand.py
 
 # 下载用户主页
 # 在 config.yml 中设置 link 为用户主页链接
-python DouYinCommand.py
+uv run DouYinCommand.py
 
 # 下载合集
 # 在 config.yml 中设置 link 为合集链接
-python DouYinCommand.py
+uv run DouYinCommand.py
 ```
 
 ## 🚀 V2.0 使用指南
@@ -149,19 +153,19 @@ python DouYinCommand.py
 
 ```bash
 # 下载单个视频（需要先配置 Cookie）
-python downloader.py -u "https://v.douyin.com/xxxxx/"
+uv run downloader.py -u "https://v.douyin.com/xxxxx/"
 
 # 下载用户主页（推荐）
-python downloader.py -u "https://www.douyin.com/user/xxxxx"
+uv run downloader.py -u "https://www.douyin.com/user/xxxxx"
 
 # 自动获取 Cookie 并下载
-python downloader.py --auto-cookie -u "https://www.douyin.com/user/xxxxx"
+uv run downloader.py --auto-cookie -u "https://www.douyin.com/user/xxxxx"
 
 # 指定保存路径
-python downloader.py -u "链接" --path "./my_videos/"
+uv run downloader.py -u "链接" --path "./my_videos/"
 
 # 使用配置文件
-python downloader.py --config
+uv run downloader.py --config
 ```
 
 ### 配置文件使用
@@ -207,13 +211,13 @@ database: true
 
 3. **运行程序**
 ```bash
-python downloader.py --config
+uv run downloader.py --config
 ```
 
 ### 命令行参数
 
 ```bash
-python downloader.py [选项] [链接...]
+uv run downloader.py [选项] [链接...]
 
 选项：
   -u, --url URL          下载链接
@@ -232,12 +236,12 @@ python downloader.py [选项] [链接...]
 
 **使用方式**：
 ```bash
-# 安装 Playwright
-pip install playwright
-playwright install chromium
+# 使用 uv 安装依赖并运行 Playwright
+uv sync
+uv run playwright install chromium
 
 # 运行自动获取
-python cookie_extractor.py
+uv run cookie_extractor.py
 ```
 
 **特点**：
@@ -248,7 +252,7 @@ python cookie_extractor.py
 - ✅ 支持多种登录方式
 
 **使用步骤**：
-1. 运行 `python cookie_extractor.py`
+1. 运行 `uv run cookie_extractor.py`
 2. 选择提取方式（推荐选择1）
 3. 在打开的浏览器中完成登录
 4. 程序自动提取并保存 Cookie
@@ -259,7 +263,7 @@ python cookie_extractor.py
 
 **使用方式**：
 ```bash
-python get_cookies_manual.py
+uv run get_cookies_manual.py
 ```
 
 **特点**：
@@ -270,7 +274,7 @@ python get_cookies_manual.py
 - ✅ 支持备份和恢复
 
 **使用步骤**：
-1. 运行 `python get_cookies_manual.py`
+1. 运行 `uv run get_cookies_manual.py`
 2. 选择"获取新的Cookie"
 3. 按照教程在浏览器中获取 Cookie
 4. 粘贴 Cookie 内容
@@ -297,7 +301,7 @@ python get_cookies_manual.py
 
 ```bash
 # 推荐使用自动工具
-python cookie_extractor.py
+uv run cookie_extractor.py
 ```
 
 ## 📋 支持的链接类型
@@ -328,8 +332,8 @@ python cookie_extractor.py
 
 ### Q: Cookie 过期怎么办？
 **A**: 
-- 使用 `python cookie_extractor.py` 重新获取
-- 或使用 `python get_cookies_manual.py` 手动获取
+- 使用 `uv run cookie_extractor.py` 重新获取
+- 或使用 `uv run get_cookies_manual.py` 手动获取
 
 ### Q: 下载速度慢怎么办？
 **A**: 
